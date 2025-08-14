@@ -3,8 +3,6 @@
 Este proyecto forma parte del **Challenge Back End** del curso de **Alura Latam**.  
 La idea es construir el backend de un **foro** donde los usuarios puedan crear, leer, actualizar y eliminar tópicos, siguiendo las mejores prácticas de **API REST**.
 
-Es muy similar a mi proyecto anterior de **Hotel Alura API**, pero esta vez usando **Spring Boot** para aprovechar su potencia y facilidad a la hora de trabajar con controladores, seguridad y persistencia de datos.
-
 ---
 
 ## 🚀 ¿Qué hace esta API?
