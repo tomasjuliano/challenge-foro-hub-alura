@@ -5,6 +5,7 @@ import com.tomasjuliano.foro_hub.domain.curso.Curso;
 import com.tomasjuliano.foro_hub.domain.respuesta.Respuesta;
 import com.tomasjuliano.foro_hub.domain.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -47,12 +48,6 @@ public class Topico {
     @JoinColumn(name = "curso_id")
     private Curso curso;
 
-    @Column(name = "nombre_curso")
-    private String nombreCurso;
-
-    @Column(name = "categoria_curso")
-    private String categoriaCurso;
-
     public Topico(DatosRegistroTopico datos, Usuario autor) {
         this.id = null;
         this.titulo = datos.titulo();
@@ -60,9 +55,19 @@ public class Topico {
         this.fechaCreacion = LocalDateTime.now();
         this.estado = Estado.NO_SOLUCIONADO;
         this.autor = autor;
-        this.curso = datos.curso();
-        this.nombreCurso = datos.curso().getNombre();
-        this.categoriaCurso = datos.curso().getCategoria().toString();
+        this.curso = new Curso(datos.curso());
         this.respuestas = null;
+    }
+
+    public void actualizarDatos(@Valid DatosActualizacionTopico datos) {
+        if (datos.titulo() != null) {
+            this.titulo = datos.titulo();
+        }
+        if (datos.mensaje() != null) {
+            this.mensaje = datos.mensaje();
+        }
+        if (datos.curso() != null) {
+            this.curso = datos.curso();
+        }
     }
 }

@@ -26,4 +26,10 @@ public class Curso {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
+
+    public Curso(DatosCurso datos) {
+        this.id = datos.id();
+        this.nombre = datos.nombre();
+        this.categoria = datos.categoria();
+    }
 }

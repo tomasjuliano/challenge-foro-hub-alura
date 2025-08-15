@@ -4,7 +4,6 @@ create table usuarios(
     nombre varchar(100) not null,
     email varchar(100) not null unique,
     contrasena varchar(255) not null,
-    fecha_creacion datetime not null,
 
     primary key (id)
 );
@@ -28,8 +27,6 @@ create table topicos(
     estado varchar(100) not null,
     autor_id bigint not null,
     curso_id bigint not null,
-    nombre_curso varchar(255) not null,
-    categoria_curso varchar(255) not null,
 
     primary key (id),
     foreign key (autor_id) references usuarios(id),

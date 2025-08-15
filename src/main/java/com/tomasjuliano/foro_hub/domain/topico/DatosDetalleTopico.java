@@ -1,5 +1,7 @@
 package com.tomasjuliano.foro_hub.domain.topico;
 
+import com.tomasjuliano.foro_hub.domain.curso.DatosCurso;
+
 import java.time.LocalDateTime;
 
 public record DatosDetalleTopico(
@@ -9,7 +11,7 @@ public record DatosDetalleTopico(
         LocalDateTime fechaCreacion,
         Estado estado,
         String nombreAutor,
-        String nombreCurso
+        DatosCurso curso
 ) {
     public DatosDetalleTopico(Topico topico) {
         this(
@@ -19,7 +21,9 @@ public record DatosDetalleTopico(
                 topico.getFechaCreacion(),
                 topico.getEstado(),
                 topico.getAutor().getNombre(),
-                topico.getNombreCurso()
+                new DatosCurso(topico.getCurso().getId(),
+                        topico.getCurso().getNombre(),
+                        topico.getCurso().getCategoria())
         );
     }
 }
